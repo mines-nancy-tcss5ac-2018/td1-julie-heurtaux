@@ -1,0 +1,39 @@
+f=open('p022_names.txt','r')
+
+#Rangement des noms par ordre alphabetiques 
+L=[]
+a=str(f.read())  #format string pour oouvoir utiliser .split
+L=a.split(',')
+L.sort()
+
+#Valeur de chaque noms
+a=list('ABCDEFGHIJKLMNOPQRSTUVWXYZ') #creation liste avec chaque elt=une lettre de l'alphabet
+
+def valeur_lettre(l): #associe à une lettre le numero correspondant à sa position dans l'alphabet
+    v=0
+    for k in range(len(a)):
+        if l==a[k]:
+            v+=k+1
+    return(v)
+
+def valeur_nom(n): #associe à un nom la valeur correspondant à la somme de ses lettres 
+    v=0
+    for l in n:
+        if l=='"':
+            v+=0
+        else:
+            v+=valeur_lettre(l)
+    return(v)
+
+#Calcul Score total
+def solve(L):
+    s=0
+    for i in range(len(L)):
+        s+=valeur_nom(L[i])*(i+1)
+    return(s)
+
+print(solve(L))
+
+
+
+            
