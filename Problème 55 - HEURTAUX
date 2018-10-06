@@ -1,0 +1,48 @@
+def palindrome(chaine): #test chaine de caractère est un palindrome ou non
+    i=0
+    longueur = len(chaine)
+    while i < longueur:
+        if chaine[i] != chaine[-i - 1]:
+              return False
+        i+=1
+    return True  
+
+def test_Lychrel(n): 
+    i=0
+    #Creation de l'inverse : initialisation 
+    n1=str(n)
+    N=list(n1)
+    n2=''
+    for k in range(len(N)-1,-1,-1):
+        n2+=N[k]
+    while i<=50:
+        #Test nombre de Lychrel ou non
+        n3=int(n1)+int(n2)
+        if palindrome(str(n3)):
+            return False 
+        else:
+            n1=str(n3) #Creation de l'inverse 
+            N=list(n1)
+            n2=''
+            for k in range(len(N)-1,-1,-1):
+                n2+=N[k]
+            i+=1
+    return True
+
+def solve(n):
+    i=10
+    s=0
+    while i<=n:
+        if test_Lychrel(i):
+           s+=1
+        i+=1
+    return(s)
+
+        
+        
+        
+        
+
+
+
+
